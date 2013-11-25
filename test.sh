@@ -20,7 +20,7 @@ function fail {
 source "./run.sh"
 
 RESULT=$?
-if [[ $RESULT != "0" ]] || [[ $GENERATED_BUILD_NR != "1" ]]; then
+if [[ $? != "0" ]] || [[ $GENERATED_BUILD_NR != "1" ]]; then
     echo "Test: FAIL -> $RESULT"
     return 1 2>/dev/null || exit 1
 else
