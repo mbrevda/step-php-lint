@@ -13,9 +13,9 @@ else
 fi
 
 
-result=$(find  "$WERCKER_PHPLINT_BUILD_DIRECTORY" -name \*.php -exec echo  php {} \;)
+RESULT=$(find  "$WERCKER_PHPLINT_BUILD_DIRECTORY" -name \*.php -exec echo  php {} \;)
 if [[ $RESULT != "0" ]] 
- warning $result;
+ warning $RESULT;
  fail 'php lint-check failed';
 fi
 
