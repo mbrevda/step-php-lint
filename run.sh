@@ -1,9 +1,8 @@
 #!/bin/sh
 set -e
 
-if [ -z "$WERCKER_PHPLINT_BUILD_DIRECTORY" ]
-then
-    fail 'missing directory option, please add this the rsync-deploy step in wercker.yml'
+if [ -z "$WERCKER_PHPLINT_BUILD_DIRECTORY" ];then
+    fail 'missing directory option, please add this to the phplint_build step in your wercker.yml'
 fi
 
 if hash php 2>/dev/null; then

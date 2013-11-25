@@ -1,7 +1,7 @@
 name: phplint-build
-version: 0.0.1
+version: 0.0.2
 description: verifies all the php files in the specified directory
 keywords:
   - php
   - lint
-  
+
