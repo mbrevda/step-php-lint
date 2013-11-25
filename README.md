@@ -1,12 +1,12 @@
-# RSync deployment step
+# PHP-lint check deployment step
 Verifies all *.php files in your specified directory
 
 
 # Options
 
-* `directory` the remote directory to upload to
+* `php_directory` the remote directory to upload to
 
 # Example
 
     - phplint-build:
-        directory: $HOME/
+        php_directory: $HOME/

@@ -1,8 +1,9 @@
 #!/bin/sh
 set -e
 
-if [ -z "$WERCKER_PHPLINT_BUILD_DIRECTORY" ];then
-    fail 'missing directory option, please add this to the phplint_build step in your wercker.yml'
+if [ -z "$WERCKER_PHPLINT_BUILD_PHP_DIRECTORY" ];then
+
+    fail 'missing php_directory option, please add this to the phplint_build step in your wercker.yml'
 fi
 
 if hash php 2>/dev/null; then
@@ -12,7 +13,7 @@ else
 fi
 
 
-RESULT=$(find  "$WERCKER_PHPLINT_BUILD_DIRECTORY" -name \*.php -exec echo  php {} \;)
+RESULT=$(find  "$WERCKER_PHPLINT_BUILD_PHP_DIRECTORY" -name \*.php -exec php {} \;)
 if [[ $RESULT != "0" ]] 
  warning $RESULT;
  fail 'php lint-check failed';
