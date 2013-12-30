@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 if [ -z "$WERCKER_PHP_LINT_DIRECTORY" ];then
     fail 'missing "directory" option, please add this to the php-lint step in your wercker.yml'
 fi
