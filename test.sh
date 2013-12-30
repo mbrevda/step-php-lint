@@ -1,19 +1,20 @@
 #!/bin/bash
+#PS4='+($?) $BASH_SOURCE:$FUNCNAME:$LINENO:'
 
 #test script to mimic fail/warning/info handlers for wercker locally
 
 export WERCKER_PHP_LINT_DIRECTORY="./"
 GENERATED_BUILD_NR="1"
 
-function info {
+info() {
 	echo "info: $1"
 }
 
-function warning {
+warning() {
 	echo "warning: $1"
 }
 
-function fail {
+fail() {
 	echo "Failing with: $1"
 	exit 1;
 }
@@ -27,4 +28,3 @@ if [[ $RESULT -ne "0" ]] || [[ $GENERATED_BUILD_NR != "1" ]]; then
 else
 	echo "done"
 fi
-echo 'here'
