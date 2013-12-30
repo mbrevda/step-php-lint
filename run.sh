@@ -12,10 +12,11 @@ else
    	fail 'missing php executable!'
 fi
 
+find  "$WERCKER_PHPLINT_BUILD_PHP_DIRECTORY" -name \*.php | while read file; do 
+	php -l $file | grep -v "No syntax errors detected" | warning; 
+done 
 
-RESULT=$(find  "$WERCKER_PHPLINT_BUILD_PHP_DIRECTORY" -name \*.php -exec php  -l {} \;)
-if [[ $? -ne 0 ]]; then
- warning '$RESULT';
+if [[ ${PIPESTATUS[1]} -ne 0 ]]; then
  fail 'php lint-check failed';
 fi
 
