@@ -1,7 +1,6 @@
 #!/bin/bash
 if [ -z "$WERCKER_PHP_LINT_DIRECTORY" ];then
-
-    fail 'missing php_directory option, please add this to the php_lint step in your wercker.yml'
+    fail 'missing "directory" option, please add this to the php-lint step in your wercker.yml'
 fi
 
 if hash php 2>/dev/null; then
