@@ -1,6 +1,6 @@
 name: php-lint
-version: 0.0.6
-description: Lint's all the PHP files in a given directory
+version: 0.0.7
+description: Lint the PHP files in a given directory
 keywords:
   - php
   - lint

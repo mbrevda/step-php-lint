@@ -19,9 +19,8 @@ box: wercker/php@0.9.5
 build:
   # The steps that will be executed on build
   steps:
-  - vinietje/phplint-build:
+  - mbrevda/php-lint:
         php_directory: $DIRECTORY
-    # A step that executes `npm install` command
 deploy:
   steps:
 
