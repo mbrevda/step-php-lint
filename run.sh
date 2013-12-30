@@ -1,9 +1,9 @@
 #!/bin/sh
 set -e
 
-if [ -z "$WERCKER_PHPLINT_BUILD_PHP_DIRECTORY" ];then
+if [ -z "$WERCKER_PHP_LINT_DIRECTORY" ];then
 
-    fail 'missing php_directory option, please add this to the phplint_build step in your wercker.yml'
+    fail 'missing php_directory option, please add this to the php_lint step in your wercker.yml'
 fi
 
 if hash php 2>/dev/null; then
@@ -12,7 +12,7 @@ else
    	fail 'missing php executable!'
 fi
 
-find  "$WERCKER_PHPLINT_BUILD_PHP_DIRECTORY" -name \*.php | while read file; do 
+find  "$WERCKER_PHP_LINT_DIRECTORY" -name \*.php | while read file; do 
 	php -l $file | grep -v "No syntax errors detected" | warning; 
 done 
 

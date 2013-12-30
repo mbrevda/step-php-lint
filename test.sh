@@ -2,7 +2,7 @@
 
 #test script to mimic fail/warning/info handlers for wercker locally
 
-export WERCKER_PHPLINT_BUILD_DIRECTORY="./"
+export WERCKER_PHP_LINT_DIRECTORY="./"
 
 function info {
 	echo "info: $1"
