@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 if [ -z "$WERCKER_PHP_LINT_DIRECTORY" ];then
@@ -12,12 +12,16 @@ else
    	fail 'missing php executable!'
 fi
 
-find  "$WERCKER_PHP_LINT_DIRECTORY" -name \*.php | while read file; do 
-	php -l $file | grep -v "No syntax errors detected" | warning; 
-done 
 
-if [[ ${PIPESTATUS[1]} -ne 0 ]]; then
- fail 'php lint-check failed';
+ERR=0
+while IFS= read -r -d '' file; do
+    php -l "$file" | grep -v "No syntax errors detected"; 
+    (( ERR |= ${PIPESTATUS[0]}  ))
+done < <(find "$WERCKER_PHP_LINT_DIRECTORY" -name \*.php -print0)
+
+if [[ $ERR -ne "0" ]]; then
+    fail 'PHP lint check failed';
 fi
 
-info 'completed lint-check';
+info 'PHP lint check complete';
+

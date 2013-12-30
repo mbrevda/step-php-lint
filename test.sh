@@ -3,6 +3,7 @@
 #test script to mimic fail/warning/info handlers for wercker locally
 
 export WERCKER_PHP_LINT_DIRECTORY="./"
+GENERATED_BUILD_NR="1"
 
 function info {
 	echo "info: $1"
@@ -17,12 +18,13 @@ function fail {
 	exit 1;
 }
 
-source "./run.sh"
+. run.sh
 
 RESULT=$?
-if [[ $? != "0" ]] || [[ $GENERATED_BUILD_NR != "1" ]]; then
+if [[ $RESULT -ne "0" ]] || [[ $GENERATED_BUILD_NR != "1" ]]; then
     echo "Test: FAIL -> $RESULT"
     return 1 2>/dev/null || exit 1
 else
 	echo "done"
 fi
+echo 'here'
