@@ -4,9 +4,9 @@ if [ -z "$WERCKER_PHP_LINT_DIRECTORY" ];then
 fi
 
 if hash php 2>/dev/null; then
-	info 'php is found'
+	info "PHP found"
 else
-   	fail 'missing php executable!'
+   	fail "PHP not found!"
 fi
 
 
@@ -17,8 +17,8 @@ while IFS= read -r -d '' file; do
 done < <(find "$WERCKER_PHP_LINT_DIRECTORY" -name \*.php -print0)
 
 if [[ $ERR -ne "0" ]]; then
-    fail 'PHP lint check failed';
+    fail "PHP lint failed";
 else 
-    success 'PHP lint check complete';
+    success "PHP lint  completed successfully";
 fi
 
