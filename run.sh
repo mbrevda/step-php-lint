@@ -18,7 +18,7 @@ done < <(find "$WERCKER_PHP_LINT_DIRECTORY" -name \*.php -print0)
 
 if [[ $ERR -ne "0" ]]; then
     fail 'PHP lint check failed';
+else 
+    success 'PHP lint check complete';
 fi
-
-info 'PHP lint check complete';
 
