@@ -1,6 +1,6 @@
-name: phplint-build
+name: php-lint
 version: 0.0.6
-description: verifies all the php files in the specified directory
+description: Lint's all the PHP files in a given directory
 keywords:
   - php
   - lint
