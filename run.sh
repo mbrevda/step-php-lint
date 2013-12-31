@@ -13,11 +13,18 @@ fi
 
 
 ERR=0
+LINE=0
 while IFS= read -r -d '' file; do
-    echo -n .
+    LINE=$(($LINE + 1))
+    if (($LINE % 80 == 0 )); then
+        echo  .
+    else
+        echo -n .
+    fi
     php -l "$file" | grep -v "No syntax errors detected"; 
     (( ERR |= ${PIPESTATUS[0]}  ))
 done < <(find "$WERCKER_PHP_LINT_DIRECTORY" -name \*.php -print0)
+echo
 
 if [[ $ERR -ne "0" ]]; then
     fail "PHP lint failed";
