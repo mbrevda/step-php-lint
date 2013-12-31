@@ -14,7 +14,7 @@ fi
 
 ERR=0
 while IFS= read -r -d '' file; do
-    info .
+    echo .
     php -l "$file" | grep -v "No syntax errors detected"; 
     (( ERR |= ${PIPESTATUS[0]}  ))
 done < <(find "$WERCKER_PHP_LINT_DIRECTORY" -name \*.php -print0)
