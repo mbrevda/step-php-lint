@@ -29,6 +29,9 @@ done < <(find "$WERCKER_PHP_LINT_DIRECTORY" -name \*.php -print0)
 echo
 
 echo -e $O
+
+set -e
+
 if [[ $ERR -ne "0" ]]; then
     fail "PHP lint failed";
 else 

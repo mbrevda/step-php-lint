@@ -1,5 +1,5 @@
 name: php-lint
-version: 0.1.9
+version: 0.1.10
 description: Lint the PHP files in a given directory
 keywords:
   - php
