@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 set +e
 
 if [ -z "$WERCKER_PHP_LINT_DIRECTORY" ];then
@@ -8,7 +8,7 @@ fi
 if hash php 2>/dev/null; then
 	info "PHP found"
 else
-   	fail "PHP not found!"
+    fail "PHP not found!"
 fi
 
 
@@ -16,13 +16,14 @@ ERR=0
 LINE=0
 O=""
 while IFS= read -r -d '' file; do
+    # count position on the line so that we can break at 80
     LINE=$(($LINE + 1))
     if (($LINE % 80 == 0 )); then
         echo  .
     else
         echo -n .
     fi
-    #php -l "$file" | grep -v "No syntax errors detected"; 
+    #php -l "$file" | grep -v "No syntax errors detected";
     O+=$({ php -l bad.php > /dev/null;  } 2>&1 | tee)\\n
     (( ERR |= ${PIPESTATUS[0]}  ))
 done < <(find "$WERCKER_PHP_LINT_DIRECTORY" -name \*.php -print0)
@@ -34,7 +35,6 @@ set -e
 
 if [[ $ERR -ne "0" ]]; then
     fail "PHP lint failed";
-else 
-    success "PHP lint  completed successfully";
+else
+    success "PHP lint completed successfully";
 fi
-

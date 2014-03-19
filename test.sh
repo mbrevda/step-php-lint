@@ -6,18 +6,7 @@
 export WERCKER_PHP_LINT_DIRECTORY="./"
 GENERATED_BUILD_NR="1"
 
-info() {
-	echo "info: $1"
-}
-
-warning() {
-	echo "warning: $1"
-}
-
-fail() {
-	echo "Failing with: $1"
-	exit 1;
-}
+. build-esen.sh
 
 . run.sh
 
